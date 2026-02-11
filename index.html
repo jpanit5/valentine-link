@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Will You Be My Valentine?</title>
+  <title>Hello Mahal ko 💖</title>
   <style>
     body {
       background: linear-gradient(135deg, #ffc0cb, #ff69b4);
@@ -17,12 +17,20 @@
       overflow: hidden;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    h1, h2 {
       color: #d63384;
-      margin-bottom: 2rem;
       text-align: center;
       transition: all 0.6s ease;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
 
     .buttons {
@@ -54,7 +62,7 @@
 
     #no {
       background-color: #fa03e5;
-      color: #c82333;
+      color: white;
       position: relative;
     }
 
@@ -92,7 +100,6 @@
       }
     }
 
-    /* Transition effects */
     .fade-out {
       opacity: 0;
       transform: translateY(50px);
@@ -113,7 +120,9 @@
   </style>
 </head>
 <body>
-  <h1 id="question">Will you be my Valentine? 💖</h1>
+  <h1 id="greeting">Hello Mahal ko 💖</h1>
+  <h2 id="question">Will you be my Valentine? 💌</h2>
+
   <div class="buttons" id="buttons">
     <button id="yes">Yes 😍</button>
     <button id="no">No 😢</button>
@@ -124,22 +133,22 @@
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
     const heartsContainer = document.querySelector(".hearts");
+    const greeting = document.getElementById("greeting");
     const question = document.getElementById("question");
     const buttons = document.getElementById("buttons");
 
     yesBtn.addEventListener("click", () => {
-      // Fade out current content
+      greeting.classList.add("fade-out");
       question.classList.add("fade-out");
       buttons.classList.add("fade-out");
 
       setTimeout(() => {
-        // Replace content after fade
         document.body.innerHTML = `
           <h1 class="fade-in" style="font-size:3rem; color:#d63384;">Yay! I love you 💕</h1>
           <div class="hearts"></div>
         `;
         createHearts();
-      }, 600); // wait for fade animation to finish
+      }, 600);
     });
 
     noBtn.addEventListener("mouseover", () => {
